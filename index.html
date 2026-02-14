@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevScope Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 13px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .control-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .btn-success { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .btn-info { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .btn-warning { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+
+        .spinner {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #999;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #333;
+            transform: scale(1.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 250px;
+            margin-bottom: 10px;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:hover {
+            background: #fafafa;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .info-text {
+            padding: 12px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-size: 13px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .command-item {
+            padding: 8px 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+            font-family: 'Courier New', monospace;
+            background: #f9f9f9;
+            margin-bottom: 3px;
+            border-radius: 4px;
+        }
+
+        .command-item:last-child {
+            border-bottom: none;
+        }
+
+        .command-time {
+            color: #999;
+            font-size: 11px;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .command-text {
+            color: #333;
+            word-break: break-all;
+        }
+
+        .productivity-item {
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 3px solid #667eea;
+        }
+
+        .productivity-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .productivity-value {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .search-box {
+            margin-bottom: 12px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 13px;
+            width: 100%;
+            transition: border-color 0.3s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        .commands-list {
+            max-height: 350px;
+            overflow-y: auto;
+        }
+
+        .command-row {
+            display: grid;
+            grid-template-columns: 130px 1fr 40px;
+            gap: 10px;
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+            background: white;
+            transition: all 0.2s;
+        }
+
+        .command-row:hover {
+            background: #f0f7ff;
+            border-left: 3px solid #667eea;
+            padding-left: 9px;
+        }
+
+        .command-row:last-child {
+            border-bottom: none;
+        }
+
+        .cmd-timestamp {
+            font-size: 11px;
+            color: #999;
+            font-family: 'Courier New', monospace;
+        }
+
+        .cmd-text {
+            font-size: 12px;
+            color: #333;
+            font-family: 'Courier New', monospace;
+            word-break: break-all;
+            background: #f5f5f5;
+            padding: 6px 8px;
+            border-radius: 4px;
+        }
+
+        .copy-btn {
+            background: #667eea;
+            border: none;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .cmd-count {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 1.5em;
+            }
+            .control-panel {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 DevScope Dashboard</h1>
+        <p>Real-time System Monitoring</p>
+    </div>
+
+    <div class="container">
+        <div class="control-panel">
+            <button class="btn btn-primary" onclick="runScript('system_stats.sh', this)">💻 System</button>
+            <button class="btn btn-success" onclick="runScript('top_cpu_processes.sh', this)">⚡ Top CPU</button>
+            <button class="btn btn-info" onclick="runScript('get_active_window.sh', this)">🪟 Window</button>
+            <button class="btn btn-warning" onclick="runScript('analyze_productivity.sh', this)">📈 Productivity</button>
+            <button class="btn btn-primary" onclick="runScript('collector.sh', this)">📊 Collect</button>
+            <button class="btn btn-success" onclick="runScript('last_commands_with_timestamps.sh', this)">🕐 Commands</button>
+        </div>
+
+        <div class="dashboard" id="dashboard"></div>
+    </div>
+
+    <script>
+        const charts = {};
+        const openCards = {};
+
+        async function runScript(scriptName, button) {
+            button.disabled = true;
+            const originalText = button.innerHTML;
+            button.innerHTML = '<span class="spinner"></span>';
+
+            try {
+                const response = await fetch('http://localhost:3000/run-script', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ script: scriptName })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    pollForData(scriptName, button, originalText);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }
+        }
+
+        function pollForData(scriptName, button, originalText) {
+            let attempts = 0;
+            // For productivity script, wait longer (120 seconds / 0.5s poll = 240 attempts)
+            const maxAttempts = scriptName === 'analyze_productivity.sh' ? 240 : 60;
+
+            const interval = setInterval(async () => {
+                attempts++;
+                try {
+                    const response = await fetch(`http://localhost:3000/script-output/${scriptName}`);
+                    const data = await response.json();
+
+                    if (data.output) {
+                        displayData(scriptName, data.output);
+                    }
+
+                    if (data.status === 'completed' || data.status === 'error' || attempts >= maxAttempts) {
+                        clearInterval(interval);
+                        button.disabled = false;
+                        button.innerHTML = originalText;
+                    }
+                } catch (error) {
+                    console.error('Poll error:', error);
+                }
+            }, 500);
+        }
+
+        function displayData(scriptName, output) {
+            if (scriptName === 'system_stats.sh') {
+                try {
+                    const data = JSON.parse(output);
+                    showSystemStats(data);
+                } catch (e) {
+                    console.error('Failed to parse system stats:', e);
+                }
+            } else if (scriptName === 'top_cpu_processes.sh') {
+                try {
+                    const data = JSON.parse(output);
+                    showCPUProcesses(data);
+                } catch (e) {
+                    console.error('Failed to parse CPU processes:', e);
+                }
+            } else if (scriptName === 'get_active_window.sh') {
+                showActiveWindow(output);
+            } else if (scriptName === 'analyze_productivity.sh') {
+                showProductivity(output);
+            } else if (scriptName === 'collector.sh') {
+                showCollectorData(output);
+            } else if (scriptName === 'last_commands_with_timestamps.sh') {
+                showCommands(output);
+            }
+        }
+
+        function createCard(id, title, content) {
+            if (!openCards[id]) {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.id = id;
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="card-title">${title}</div>
+                        <button class="close-btn" onclick="closeCard('${id}')">✕</button>
+                    </div>
+                    ${content}
+                `;
+                document.getElementById('dashboard').appendChild(card);
+                openCards[id] = true;
+            } else {
+                const card = document.getElementById(id);
+                if (card) {
+                    const headerHtml = card.querySelector('.card-header').outerHTML;
+                    card.innerHTML = headerHtml + content;
+                }
+            }
+        }
+
+        function closeCard(id) {
+            const card = document.getElementById(id);
+            if (card) {
+                card.remove();
+                delete openCards[id];
+                if (charts[id]) {
+                    charts[id].destroy();
+                    delete charts[id];
+                }
+            }
+        }
+
+        function showSystemStats(data) {
+            const content = `
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value">${data.memory.usage_percent.toFixed(1)}%</div>
+                        <div class="stat-label">Memory</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">${data.cpu.load_average_1m.toFixed(2)}</div>
+                        <div class="stat-label">CPU Load</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">${data.uptime.days}d</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">${(data.memory.used_bytes / 1024 / 1024 / 1024).toFixed(1)}GB</div>
+                        <div class="stat-label">Used RAM</div>
+                    </div>
+                </div>
+            `;
+            createCard('system-stats', '💻 System Statistics', content);
+        }
+
+        function showCPUProcesses(data) {
+            if (!data.processes || data.processes.length === 0) return;
+
+            const topProcesses = data.processes.slice(0, 8);
+            
+            const chartHtml = `<div class="chart-container"><canvas id="cpuChart"></canvas></div>`;
+            
+            let tableHtml = '<div class="table-container"><table><tr><th>Process</th><th>CPU %</th></tr>';
+            data.processes.slice(0, 12).forEach(p => {
+                tableHtml += `<tr><td>${p.name.substring(0, 40)}</td><td><strong>${p.cpu_percentage.toFixed(1)}%</strong></td></tr>`;
+            });
+            tableHtml += '</table></div>';
+
+            const content = chartHtml + tableHtml;
+            createCard('cpu-processes', '⚡ Top CPU Processes', content);
+
+            setTimeout(() => {
+                const ctx = document.getElementById('cpuChart');
+                if (ctx && !charts['cpu-processes']) {
+                    charts['cpu-processes'] = new Chart(ctx.getContext('2d'), {
+                        type: 'bar',
+                        data: {
+                            labels: topProcesses.map(p => p.name.substring(0, 25)),
+                            datasets: [{
+                                label: 'CPU %',
+                                data: topProcesses.map(p => p.cpu_percentage),
+                                backgroundColor: ['#ff6b6b', '#ee5a6f', '#f17070', '#e55039', '#f8b500', '#ff6348', '#ff9ff3', '#fd79a8'],
+                                borderRadius: 5
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            indexAxis: 'y',
+                            plugins: { legend: { display: false } },
+                            scales: { x: { beginAtZero: true } }
+                        }
+                    });
+                }
+            }, 100);
+        }
+
+        function showActiveWindow(output) {
+            const lines = output.trim().split('\n').filter(l => l.trim());
+            const content = `<div class="info-text">${escapeHtml(lines.join('\n'))}</div>`;
+            createCard('active-window', '🪟 Active Window', content);
+        }
+
+        function showProductivity(output) {
+            console.log('=== PRODUCTIVITY DEBUG ===');
+            console.log('Output length:', output.length);
+            console.log('Has JSON:', output.includes('"analysis_timestamp"'));
+            
+            let content = '<div>';
+            let foundData = false;
+            
+            try {
+                // Extract analysis timestamp
+                const timeMatch = output.match(/"analysis_timestamp":\s*"([^"]+)"/);
+                
+                if (timeMatch) {
+                    foundData = true;
+                    content += `
+                        <div class="productivity-item">
+                            <span class="productivity-label">📅 Analysis Time</span>
+                            <span class="productivity-value">${timeMatch[1]}</span>
+                        </div>
+                    `;
+                }
+                
+                // Extract entries analyzed
+                const entriesMatch = output.match(/"entries_analyzed":\s*(\d+)/);
+                
+                if (entriesMatch) {
+                    foundData = true;
+                    content += `
+                        <div class="productivity-item">
+                            <span class="productivity-label">📊 Entries Analyzed</span>
+                            <span class="productivity-value">${entriesMatch[1]}</span>
+                        </div>
+                    `;
+                }
+                
+                // Try to find data_entries array
+                const dataMatch = output.match(/"data_entries":\s*\[/);
+                
+                if (dataMatch) {
+                    content += `
+                        <div class="productivity-item">
+                            <span class="productivity-label">✓ Data Collection</span>
+                            <span class="productivity-value">Ready</span>
+                        </div>
+                    `;
+                }
+                
+                // Check for errors in output
+                if (output.includes('Error:')) {
+                    const errorMatch = output.match(/Error:\s*([^\n]+)/);
+                    if (errorMatch && errorMatch[1].includes('GitHub')) {
+                        content += `
+                            <div class="productivity-item" style="border-left-color: #fa9f2f;">
+                                <span class="productivity-label">ℹ️ Info</span>
+                                <span class="productivity-value" style="color: #fa9f2f;">GitHub Copilot unavailable</span>
+                            </div>
+                        `;
+                    }
+                }
+                
+            } catch (e) {
+                console.error('Error parsing productivity:', e);
+            }
+            
+            content += '</div>';
+            
+            // If nothing was extracted, show default message
+            if (!foundData) {
+                content = `
+                    <div style="padding: 20px; text-align: center; color: #999;">
+                        <div style="font-size: 28px; margin-bottom: 10px;">⏳</div>
+                        <div>Running analysis...</div>
+                        <div style="font-size: 12px; margin-top: 10px;">This may take up to 2 minutes</div>
+                    </div>
+                `;
+            }
+
+            createCard('productivity', '📈 Productivity', content);
+        }
+
+        function showCommands(output) {
+            let commands = [];
+            
+            try {
+                // Try to extract JSON from output
+                const jsonMatch = output.match(/\{[\s\S]*\}/);
+                if (jsonMatch) {
+                    const data = JSON.parse(jsonMatch[0]);
+                    
+                    if (data.commands && Array.isArray(data.commands)) {
+                        commands = data.commands.slice(0, 50);
+                    }
+                } else {
+                    // Parse text format
+                    const lines = output.trim().split('\n').filter(l => l.trim() && !l.includes('Error') && !l.includes('Usage'));
+                    commands = lines.slice(0, 50).map(line => ({ command: line, retrieved_at: '' }));
+                }
+            } catch (e) {
+                console.error('Failed to parse commands:', e);
+            }
+
+            if (commands.length === 0) {
+                createCard('commands', '🕐 Recent Commands', '<div class="no-results">No commands found</div>');
+                return;
+            }
+
+            const uniqueId = 'cmd-' + Date.now();
+            let content = `
+                <input type="text" id="searchInput-${uniqueId}" class="search-box" placeholder="🔍 Search commands..." onkeyup="filterCommands('${uniqueId}')">
+                <div class="cmd-count" id="cmdCount-${uniqueId}">${commands.length} commands</div>
+                <div class="commands-list" id="cmdList-${uniqueId}">
+            `;
+            
+            commands.forEach((cmd, idx) => {
+                const cmdText = cmd.command || cmd;
+                const timestamp = cmd.retrieved_at || cmd.timestamp || '';
+                content += `
+                    <div class="command-row" data-cmd="${cmdText.toLowerCase()}">
+                        <div class="cmd-timestamp">${escapeHtml(timestamp)}</div>
+                        <div class="cmd-text">${escapeHtml(cmdText)}</div>
+                        <button class="copy-btn" onclick="copyCommand('${escapeHtml(cmdText).replace(/'/g, "\\'")}')">Copy</button>
+                    </div>
+                `;
+            });
+            
+            content += '</div>';
+            createCard('commands', '🕐 Recent Commands', content);
+        }
+
+        function filterCommands(uniqueId) {
+            const searchInput = document.getElementById('searchInput-' + uniqueId);
+            const cmdList = document.getElementById('cmdList-' + uniqueId);
+            const cmdCount = document.getElementById('cmdCount-' + uniqueId);
+            
+            if (!searchInput || !cmdList) return;
+            
+            const filter = searchInput.value.toLowerCase();
+            const rows = cmdList.querySelectorAll('.command-row');
+            let visibleCount = 0;
+            
+            rows.forEach(row => {
+                if (row.getAttribute('data-cmd').includes(filter)) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            cmdCount.textContent = visibleCount + ' / ' + rows.length + ' commands';
+            
+            if (visibleCount === 0) {
+                if (!cmdList.querySelector('.no-results')) {
+                    const noResults = document.createElement('div');
+                    noResults.className = 'no-results';
+                    noResults.textContent = 'No matching commands found';
+                    cmdList.appendChild(noResults);
+                }
+            } else {
+                const noResults = cmdList.querySelector('.no-results');
+                if (noResults) noResults.remove();
+            }
+        }
+
+        function copyCommand(cmd) {
+            const text = cmd.replace(/\\/g, '');
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✓ Copied to clipboard!');
+            }).catch(() => {
+                alert('Failed to copy');
+            });
+        }
+
+        function showCollectorData(output) {
+            try {
+                const jsonMatch = output.match(/\{[\s\S]*\}/);
+                if (jsonMatch) {
+                    const data = JSON.parse(jsonMatch[0]);
+                    
+                    if (data.memory) {
+                        const stats = {
+                            memory: data.memory,
+                            cpu: data.cpu || { load_average_1m: 0 },
+                            uptime: data.uptime || { days: 0, hours: 0, minutes: 0 }
+                        };
+                        showSystemStats(stats);
+                    }
+                    
+                    if (data.processes) {
+                        showCPUProcesses(data);
+                    }
+                }
+            } catch (e) {
+                console.error('Failed to parse collector data:', e);
+                const content = `<div class="info-text">${escapeHtml(output.substring(0, 500))}</div>`;
+                createCard('collector', '📊 Collector Data', content);
+            }
+        }
+
+        function escapeHtml(text) {
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+            return String(text).replace(/[&<>"']/g, m => map[m]);
+        }
+    </script>
+</body>
+</html>

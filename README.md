@@ -22,12 +22,14 @@ The installation script handles dependency installation, but on manual setup you
 
 - **Linux OS**: Debian/Ubuntu, Fedora/RHEL/CentOS, or Arch Linux
 - **Tools**: `xdotool` or `wmctrl` (for window tracking), `jq` (JSON processing), `curl`
+- **Node.js**: v14+ (for web dashboard)
 - **Optional**: GitHub CLI (`gh`) for AI-powered analysis
 
 ### Quick Install
 
 ```bash
 sudo ./install.sh
+npm install
 ```
 
 The installer will:
@@ -36,7 +38,8 @@ The installer will:
 3. Make all scripts executable
 4. Install scripts to `/usr/local/lib/devscope`
 5. Create `devscope` command in `/usr/local/bin`
-6. Verify installation
+6. Install Node.js dependencies
+7. Verify installation
 
 After installation, add to your PATH if needed:
 ```bash
@@ -44,6 +47,42 @@ export PATH="/usr/local/bin:$PATH"
 ```
 
 ## Usage
+
+### Web Dashboard
+
+Start the interactive web dashboard for a user-friendly interface:
+
+```bash
+npm start
+```
+
+The dashboard opens at `http://localhost:3000` and provides:
+- **System Stats**: Real-time CPU, memory, and uptime metrics
+- **Top Processes**: Interactive bar chart of CPU-consuming processes
+- **Active Window**: Current window title and application info
+- **Commands**: Searchable command history with copy-to-clipboard
+- **Collector**: Start/stop background data collection daemon
+- **Productivity**: AI-powered productivity analysis with GitHub Copilot
+
+#### Dashboard Features
+
+- 📊 **Real-time Charts**: Visual data with Chart.js
+- 🔍 **Search & Filter**: Find commands with instant results
+- 📋 **Copy to Clipboard**: Quick command copying
+- ⏱️ **Status Tracking**: Live collection status and timing
+- 🎯 **Responsive Design**: Works on desktop and tablets
+- ✨ **Dark-friendly UI**: Easy on the eyes, high contrast
+
+#### Button Descriptions
+
+| Button | Function | Time |
+|--------|----------|------|
+| 💻 System | Shows system metrics (CPU load, memory, uptime) | <1s |
+| ⚡ Top CPU | Lists top 5 CPU-consuming processes with chart | <1s |
+| 🪟 Window | Displays currently active window title | <1s |
+| 🕐 Commands | Shows last 10 commands with search functionality | <1s |
+| 📊 Collect | Starts background daemon (24/7 data collection) | 5s setup |
+| 📈 Productivity | Analyzes collected data with AI insights | 30-60s |
 
 ### Core Commands
 
@@ -304,7 +343,7 @@ devscope processes | jq .
 
 ## License
 
-Open source - feel free to modify and distribute
+MIT License - see LICENSE file for details
 
 ## Contributing
 
@@ -316,7 +355,38 @@ Improvements welcome! Areas for enhancement:
 - Integration with other productivity tools
 - Performance optimizations
 
+## GitHub Copilot Integration
+
+DevScope uses GitHub Copilot CLI to generate productivity insights:
+
+- Analyzes patterns from collected system data
+- Interprets active window titles and command history
+- Provides AI-powered recommendations
+- Requires GitHub CLI (`gh`) and Copilot access
+- Analysis data is processed locally, not uploaded
+
+## Project Structure
+
+```
+devscope/
+├── README.md                      # Documentation
+├── LICENSE                        # MIT License
+├── package.json                   # Node.js configuration
+├── .gitignore                     # Git ignore rules
+├── .env.example                   # Environment config template
+├── server.js                      # Express backend for web dashboard
+├── index.html                     # Interactive web UI
+├── collector.sh                   # Background data collection daemon
+├── analyze_productivity.sh         # AI-powered productivity analyzer
+├── system_stats.sh                # System metrics collector
+├── top_cpu_processes.sh           # Process monitor
+├── get_active_window.sh           # Window tracker
+├── last_commands_with_timestamps.sh # Command history
+└── install.sh                     # Installation script
+```
+
 ---
 
 **Version**: 1.0.0  
+**License**: MIT  
 **Last Updated**: 2026-02-14
