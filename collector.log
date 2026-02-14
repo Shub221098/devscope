@@ -1,0 +1,132 @@
+[2026-02-14 13:42:49] [INFO] Collector daemon started (PID: 122818)
+[2026-02-14 13:42:49] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:42:49] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:42:49] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:42:49] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:42:54] [INFO] Shutting down collector daemon
+[2026-02-14 13:47:20] [INFO] Collector daemon started (PID: 124243)
+[2026-02-14 13:47:20] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:47:20] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:47:20] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:47:20] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:47:49] [INFO] Collector daemon started (PID: 124458)
+[2026-02-14 13:47:49] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:47:49] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:47:49] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:47:49] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:48:49] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:48:49] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:48:49] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:48:49] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:49:49] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:49:49] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:49:49] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:49:49] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:50:49] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:50:49] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:50:49] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:50:49] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:51:49] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:51:49] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:51:49] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:51:49] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:52:49] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:52:49] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:52:49] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:52:49] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:53:49] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:53:49] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:53:49] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:53:49] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:54:49] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:54:49] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:54:49] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:54:49] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:55:50] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:55:50] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:55:50] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:55:50] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:56:50] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:56:50] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:56:50] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:56:50] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:57:50] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:57:50] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:57:50] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:57:50] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:58:50] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:58:50] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:58:50] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:58:50] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 13:59:50] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 13:59:50] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 13:59:50] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 13:59:50] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:00:50] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:00:50] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:00:50] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:00:50] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:01:50] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:01:50] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:01:50] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:01:50] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:02:50] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:02:50] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:02:50] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:02:50] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:03:50] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:03:50] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:03:50] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:03:50] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:04:50] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:04:50] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:04:50] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:04:50] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:05:50] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:05:50] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:05:50] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:05:50] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:06:50] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:06:50] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:06:50] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:06:51] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:07:51] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:07:51] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:07:51] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:07:51] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:08:51] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:08:51] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:08:51] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:08:51] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:09:51] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:09:51] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:09:51] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:09:51] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:10:51] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:10:51] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:10:51] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:10:51] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:11:51] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:11:51] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:11:51] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:11:51] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:12:51] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:12:51] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:12:51] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:12:51] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:13:51] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:13:51] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:13:51] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:13:51] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:14:51] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:14:51] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:14:51] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:14:51] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:15:51] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:15:51] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:15:51] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:15:51] [INFO] Collector succeeded: system_stats.sh
+[2026-02-14 14:16:51] [ERROR] Collector failed: get_active_window.sh - Error: xdotool or wmctrl is required
+[2026-02-14 14:16:51] [INFO] Collector succeeded: top_cpu_processes.sh
+[2026-02-14 14:16:51] [INFO] Collector succeeded: last_commands_with_timestamps.sh
+[2026-02-14 14:16:51] [INFO] Collector succeeded: system_stats.sh

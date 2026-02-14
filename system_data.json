@@ -1,0 +1,95 @@
+{
+  "timestamp": "2026-02-14T08:46:51Z",
+  "data": {
+    "get_active_window": {"error": "failed to collect data"},
+    "top_cpu_processes": {
+  "processes": [
+    {
+      "name": "ps",
+      "cpu_percentage": 400.0
+    },
+    {
+      "name": "/proc/self/exe",
+      "cpu_percentage": 64.9
+    },
+    {
+      "name": "/opt/Postman/app/postman",
+      "cpu_percentage": 10.1
+    },
+    {
+      "name": "/opt/google/chrome/chrome",
+      "cpu_percentage": 10.0
+    },
+    {
+      "name": "/snap/code/223/usr/share/code/code",
+      "cpu_percentage": 8.7
+    }
+  ]
+},
+    "last_commands_with_timestamps": {
+  "timestamp": "2026-02-14 14:16:51",
+  "commands": [
+    {
+      "command": "clear",
+      "retrieved_at": "2026-02-14 14:16:51"
+    },
+    {
+      "command": "sls offline",
+      "retrieved_at": "2026-02-14 14:16:51"
+    },
+    {
+      "command": "clear",
+      "retrieved_at": "2026-02-14 14:16:51"
+    },
+    {
+      "command": "sls offline",
+      "retrieved_at": "2026-02-14 14:16:51"
+    },
+    {
+      "command": "clear",
+      "retrieved_at": "2026-02-14 14:16:51"
+    },
+    {
+      "command": "cd /home/caps/Desktop/tier-5-priyanka/RedBeltGyms/src/services/mobile-app/communication/src",
+      "retrieved_at": "2026-02-14 14:16:51"
+    },
+    {
+      "command": "node -c /home/caps/Desktop/tier-5-priyanka/RedBeltGyms/src/services/mobile-app/communication/src/logDetail.js",
+      "retrieved_at": "2026-02-14 14:16:51"
+    },
+    {
+      "command": "node -c /home/caps/Desktop/tier-5-priyanka/RedBeltGyms/src/services/mobile-app/communication/src/logDetail.js",
+      "retrieved_at": "2026-02-14 14:16:51"
+    },
+    {
+      "command": "node -c /home/caps/Desktop/tier-5-priyanka/RedBeltGyms/src/services/mobile-app/communication/src/logDetail.js",
+      "retrieved_at": "2026-02-14 14:16:51"
+    },
+    {
+      "command": "sls offline",
+      "retrieved_at": "2026-02-14 14:16:51"
+    }
+  ]
+},
+    "system_stats": {
+  "timestamp": "2026-02-14T08:46:51Z",
+  "memory": {
+    "total_bytes": 16633937920,
+    "used_bytes": 13113057280,
+    "free_bytes": 2379616256,
+    "usage_percent": 78.8
+  },
+  "cpu": {
+    "load_average_1m": 0.31,
+    "load_average_5m": 0.42,
+    "load_average_15m": 1.05
+  },
+  "uptime": {
+    "total_seconds": 77453,
+    "days": 0,
+    "hours": 21,
+    "minutes": 30
+  }
+}
+  }
+}

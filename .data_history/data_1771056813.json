@@ -1,0 +1,95 @@
+{
+  "timestamp": "2026-02-14T08:12:49Z",
+  "data": {
+    "get_active_window": {"error": "failed to collect data"},
+    "top_cpu_processes": {
+  "processes": [
+    {
+      "name": "/proc/self/exe",
+      "cpu_percentage": 79.9
+    },
+    {
+      "name": "/proc/self/exe",
+      "cpu_percentage": 76.9
+    },
+    {
+      "name": "/home/caps/.nvm/versions/node/v21.7.3/lib/node_modules/@github/copilot/node_modules/@github/copilot-linux-x64/copilot",
+      "cpu_percentage": 19.0
+    },
+    {
+      "name": "/snap/code/223/usr/share/code/code",
+      "cpu_percentage": 14.6
+    },
+    {
+      "name": "/proc/self/exe",
+      "cpu_percentage": 13.6
+    }
+  ]
+},
+    "last_commands_with_timestamps": {
+  "timestamp": "2026-02-14 13:42:49",
+  "commands": [
+    {
+      "command": "clear",
+      "retrieved_at": "2026-02-14 13:42:49"
+    },
+    {
+      "command": "sls offline",
+      "retrieved_at": "2026-02-14 13:42:49"
+    },
+    {
+      "command": "clear",
+      "retrieved_at": "2026-02-14 13:42:49"
+    },
+    {
+      "command": "sls offline",
+      "retrieved_at": "2026-02-14 13:42:49"
+    },
+    {
+      "command": "clear",
+      "retrieved_at": "2026-02-14 13:42:49"
+    },
+    {
+      "command": "cd /home/caps/Desktop/tier-5-priyanka/RedBeltGyms/src/services/mobile-app/communication/src",
+      "retrieved_at": "2026-02-14 13:42:49"
+    },
+    {
+      "command": "node -c /home/caps/Desktop/tier-5-priyanka/RedBeltGyms/src/services/mobile-app/communication/src/logDetail.js",
+      "retrieved_at": "2026-02-14 13:42:49"
+    },
+    {
+      "command": "node -c /home/caps/Desktop/tier-5-priyanka/RedBeltGyms/src/services/mobile-app/communication/src/logDetail.js",
+      "retrieved_at": "2026-02-14 13:42:49"
+    },
+    {
+      "command": "node -c /home/caps/Desktop/tier-5-priyanka/RedBeltGyms/src/services/mobile-app/communication/src/logDetail.js",
+      "retrieved_at": "2026-02-14 13:42:49"
+    },
+    {
+      "command": "sls offline",
+      "retrieved_at": "2026-02-14 13:42:49"
+    }
+  ]
+},
+    "system_stats": {
+  "timestamp": "2026-02-14T08:12:49Z",
+  "memory": {
+    "total_bytes": 16633937920,
+    "used_bytes": 15001444352,
+    "free_bytes": 697204736,
+    "usage_percent": 90.2
+  },
+  "cpu": {
+    "load_average_1m": 5.70,
+    "load_average_5m": 4.48,
+    "load_average_15m": 3.65
+  },
+  "uptime": {
+    "total_seconds": 75411,
+    "days": 0,
+    "hours": 20,
+    "minutes": 56
+  }
+}
+  }
+}
